@@ -2,7 +2,11 @@
 
 class Lecturer extends DB
 {
-    // Mengambil semua data dosen
+    public function __construct($host, $user, $pass, $db)
+    {
+        parent::__construct($host, $user, $pass, $db);
+    }
+
     public function getLecturer()
     {
         $query = "SELECT * FROM lecturers";

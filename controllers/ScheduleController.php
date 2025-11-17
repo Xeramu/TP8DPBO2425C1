@@ -18,16 +18,16 @@ class ScheduleController
     }
 
     // ==========================
-    // INDEX — menampilkan semua schedule
+    // INDEX — tampilkan semua schedule
     // ==========================
     public function index()
     {
         $this->schedule->open();
         $this->schedule->getSchedule();
 
-        $data = array();
+        $data = [];
         while ($row = $this->schedule->getResult()) {
-            array_push($data, $row);
+            $data[] = $row;
         }
 
         $this->schedule->close();
@@ -41,7 +41,7 @@ class ScheduleController
     // ==========================
     public function add()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $data = [
                 'course_id' => $_POST['course_id'],
@@ -54,7 +54,7 @@ class ScheduleController
             $this->schedule->add($data);
             $this->schedule->close();
 
-            header("Location: index.php?controller=schedule");
+            header("Location: index-schedule.php");
         }
     }
 
@@ -63,7 +63,7 @@ class ScheduleController
     // ==========================
     public function edit()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $id = $_POST['id'];
 
@@ -78,7 +78,7 @@ class ScheduleController
             $this->schedule->update($id, $data);
             $this->schedule->close();
 
-            header("Location: index.php?controller=schedule");
+            header("Location: index-schedule.php");
         }
     }
 
@@ -87,15 +87,15 @@ class ScheduleController
     // ==========================
     public function delete()
     {
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id_hapus'])) {
 
-            $id = $_GET['id'];
+            $id = $_GET['id_hapus'];
 
             $this->schedule->open();
             $this->schedule->delete($id);
             $this->schedule->close();
 
-            header("Location: index.php?controller=schedule");
+            header("Location: index-schedule.php");
         }
     }
 }

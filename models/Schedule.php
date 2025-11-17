@@ -1,4 +1,6 @@
 <?php
+include_once("DB.php");
+include_once("config.php");
 
 class Schedule extends DB
 {

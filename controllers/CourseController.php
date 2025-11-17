@@ -18,14 +18,14 @@ class CourseController
     }
 
     // ==========================
-    // INDEX — menampilkan semua course
+    // INDEX — tampilkan semua course
     // ==========================
     public function index()
     {
         $this->course->open();
         $this->course->getCourse();
 
-        $data = array();
+        $data = [];
         while ($row = $this->course->getResult()) {
             array_push($data, $row);
         }
@@ -41,7 +41,7 @@ class CourseController
     // ==========================
     public function add()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $data = [
                 'lecturer_id' => $_POST['lecturer_id'],
@@ -53,7 +53,7 @@ class CourseController
             $this->course->add($data);
             $this->course->close();
 
-            header("Location: index.php?controller=course");
+            header("Location: index-course.php");
         }
     }
 
@@ -62,7 +62,7 @@ class CourseController
     // ==========================
     public function edit()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $id = $_POST['id'];
 
@@ -76,7 +76,7 @@ class CourseController
             $this->course->update($id, $data);
             $this->course->close();
 
-            header("Location: index.php?controller=course");
+            header("Location: index-course.php");
         }
     }
 
@@ -85,15 +85,15 @@ class CourseController
     // ==========================
     public function delete()
     {
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id_hapus'])) {
 
-            $id = $_GET['id'];
+            $id = $_GET['id_hapus'];
 
             $this->course->open();
             $this->course->delete($id);
             $this->course->close();
 
-            header("Location: index.php?controller=course");
+            header("Location: index-course.php");
         }
     }
 }

@@ -47,7 +47,7 @@ class LecturerController
     // =============================
     public function add()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $data = [
                 'name'      => $_POST['name'],
@@ -69,7 +69,7 @@ class LecturerController
     // =============================
     public function edit()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['add'])) {
 
             $id         = $_POST['id'];
             $name       = $_POST['name'];

@@ -9,15 +9,11 @@ $controller = new LecturerController();
 if (isset($_POST['add'])) {
     $controller->add();
 
-// Edit lecturer
-} else if (!empty($_GET['id_edit'])) {
-    $controller->edit();
-
-// Hapus lecturer
+// Hapus
 } else if (!empty($_GET['id_hapus'])) {
     $controller->delete();
 
-// Tampilkan daftar lecturer
+// Tampil
 } else {
     $controller->index();
 }
