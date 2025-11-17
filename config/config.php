@@ -1,5 +1,5 @@
 <?php
-class config {
+class Config {
     private $servername = "localhost";
     private $username   = "root";
     private $password   = "";

@@ -1,5 +1,7 @@
 <?php
 
+include_once("DB.php");
+
 class Schedule extends DB
 {
     // Ambil semua schedule + nama course + nama dosen

@@ -1,5 +1,7 @@
 <?php
 
+include_once("DB.php");
+
 class Lecturer extends DB
 {
     // Ambil semua lecturer

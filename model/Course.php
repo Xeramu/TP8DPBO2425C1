@@ -1,5 +1,7 @@
 <?php
 
+include_once("DB.php");
+
 class Course extends DB
 {
     // Ambil semua course + nama dosennya
