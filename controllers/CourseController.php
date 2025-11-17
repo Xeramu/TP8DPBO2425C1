@@ -1,6 +1,7 @@
 <?php
 include_once("config.php");
 include_once("models/Course.php");
+include_once("models/Lecturer.php");
 include_once("views/CourseView.php");
 
 class CourseController
@@ -25,15 +26,26 @@ class CourseController
         $this->course->open();
         $this->course->getCourse();
 
-        $data = [];
+        $courses = [];
         while ($row = $this->course->getResult()) {
-            array_push($data, $row);
+            array_push($courses, $row);
         }
-
         $this->course->close();
 
+        // Ambil lecturer
+        $lecturer = new Lecturer(Config::$db_host, Config::$db_user, Config::$db_pass, Config::$db_name);
+        $lecturer->open();
+        $lecturer->getLecturer();
+
+        $lecturers = [];
+        while ($l = $lecturer->getResult()) {
+            array_push($lecturers, $l);
+        }
+        $lecturer->close();
+
+        // Kirim ke view
         $view = new CourseView();
-        $view->render($data);
+        $view->render($courses, $lecturers);
     }
 
     // ==========================
@@ -53,7 +65,7 @@ class CourseController
             $this->course->add($data);
             $this->course->close();
 
-            header("Location: index-course.php");
+            header("Location: course.php");
         }
     }
 
@@ -76,7 +88,7 @@ class CourseController
             $this->course->update($id, $data);
             $this->course->close();
 
-            header("Location: index-course.php");
+            header("Location: course.php");
         }
     }
 
@@ -93,7 +105,7 @@ class CourseController
             $this->course->delete($id);
             $this->course->close();
 
-            header("Location: index-course.php");
+            header("Location: course.php");
         }
     }
 }

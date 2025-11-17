@@ -60,7 +60,7 @@ class LecturerController
             $this->lecturer->add($data);
             $this->lecturer->close();
 
-            header("Location: index.php?controller=lecturer");
+            header("Location: index.php");
         }
     }
 
@@ -86,7 +86,7 @@ class LecturerController
             // Jika kamu ingin update name/nidn/phone, tinggal tambahin method baru di model.
             $this->lecturer->close();
 
-            header("Location: index.php?controller=lecturer");
+            header("Location: index.php");
         }
     }
 
@@ -95,15 +95,16 @@ class LecturerController
     // =============================
     public function delete()
     {
-        if (isset($_GET['id'])) {
-
-            $id = $_GET['id'];
+        if (isset($_GET['id_hapus'])) {
+            $id = $_GET['id_hapus'];
 
             $this->lecturer->open();
             $this->lecturer->delete($id);
             $this->lecturer->close();
 
-            header("Location: index.php?controller=lecturer");
+            header("Location: index.php"); // refresh halaman
+            exit();
         }
     }
+
 }

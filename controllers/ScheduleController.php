@@ -1,6 +1,7 @@
 <?php
 include_once("config.php");
 include_once("models/Schedule.php");
+include_once("models/Course.php");
 include_once("views/ScheduleView.php");
 
 class ScheduleController
@@ -18,22 +19,32 @@ class ScheduleController
     }
 
     // ==========================
-    // INDEX — tampilkan semua schedule
+    // INDEX — menampilkan semua schedule
     // ==========================
     public function index()
     {
+        // Ambil semua schedule
         $this->schedule->open();
         $this->schedule->getSchedule();
-
-        $data = [];
+        $schedules = [];
         while ($row = $this->schedule->getResult()) {
-            $data[] = $row;
+            $schedules[] = $row;
         }
-
         $this->schedule->close();
 
+        // Ambil semua course (untuk dropdown)
+        $course = new Course(Config::$db_host, Config::$db_user, Config::$db_pass, Config::$db_name);
+        $course->open();
+        $course->getCourse();
+        $courses = [];
+        while ($c = $course->getResult()) {
+            $courses[] = $c;
+        }
+        $course->close();
+
+        // Kirim ke view
         $view = new ScheduleView();
-        $view->render($data);
+        $view->render($schedules, $courses);
     }
 
     // ==========================
@@ -54,7 +65,7 @@ class ScheduleController
             $this->schedule->add($data);
             $this->schedule->close();
 
-            header("Location: index-schedule.php");
+            header("Location: schedule.php"); // redirect ke file schedule
         }
     }
 
@@ -63,10 +74,9 @@ class ScheduleController
     // ==========================
     public function edit()
     {
-        if (isset($_POST['add'])) {
+        if (isset($_POST['edit'])) {
 
             $id = $_POST['id'];
-
             $data = [
                 'course_id' => $_POST['course_id'],
                 'day'       => $_POST['day'],
@@ -78,7 +88,7 @@ class ScheduleController
             $this->schedule->update($id, $data);
             $this->schedule->close();
 
-            header("Location: index-schedule.php");
+            header("Location: schedule.php");
         }
     }
 
@@ -95,7 +105,7 @@ class ScheduleController
             $this->schedule->delete($id);
             $this->schedule->close();
 
-            header("Location: index-schedule.php");
+            header("Location: schedule.php");
         }
     }
 }
