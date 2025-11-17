@@ -17,6 +17,7 @@ class LecturerView
                 <td>{$d['join_date']}</td>
                 <td>
                     <a href='index.php?id_hapus={$d['id']}' class='btn btn-danger btn-sm'>Delete</a>
+                    <a href='index.php?id_edit={$d['id']}' class='btn btn-warning btn-sm'>Edit</a>
                 </td>
             </tr>";
             $no++;

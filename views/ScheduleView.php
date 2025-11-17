@@ -24,6 +24,7 @@ class ScheduleView
                 <td>{$s['room']}</td>
                 <td>
                     <a href='schedule.php?id_hapus={$s['id']}' class='btn btn-danger btn-sm'>Delete</a>
+                    <a href='schedule.php?id_edit={$s['id']}' class='btn btn-warning btn-sm'>Edit</a>
                 </td>
             </tr>";
             $no++;

@@ -18,6 +18,7 @@ class CourseView
                     <td>{$c['lecturer_name']}</td>
                     <td>
                         <a href='course.php?id_hapus={$c['id']}' class='btn btn-danger btn-sm'>Delete</a>
+                        <a href='course.php?id_edit={$c['id']}' class='btn btn-warning btn-sm'>Edit</a>
                     </td>
                 </tr>";
             $no++;
