@@ -54,3 +54,7 @@
 
 3. Dokumentasi
    
+https://drive.google.com/file/d/12xtu_177041tp_-Z6-k312T7kNCTq2po/view?usp=sharing
+
+
+gabisa compress video krn sepertinya smua web THAT I FRICKING NEED itu pada down smua krn cloudfare jg down. So here's the next best thing. gdrive link. dadah, mau bobok
