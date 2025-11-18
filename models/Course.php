@@ -4,7 +4,7 @@
 
 class Course extends DB
 {
-    // Mengambil semua course beserta info dosen
+    // ngambil semua course beserta info dosen
     public function getCourse()
     {
         $query = "SELECT c.*, l.name AS lecturer_name 
@@ -13,13 +13,12 @@ class Course extends DB
         return $this->execute($query);
     }
 
-    // Menambahkan course baru
+    // nambahin course baru
     public function add($data)
     {
-        // $data = ['lecturer_id' => 1, 'course_name' => 'Matematika', 'credits' => 3]
         $lecturer_id = $data['lecturer_id'];
         $course_name = $data['course_name'];
-        $credits = $data['credits'] ?? 3;
+        $credits = $data['credits'] ?? 3; // kreditnya engga boleh lebih dr 6, defaultnya 3
 
         $query = "INSERT INTO courses (lecturer_id, course_name, credits)
                   VALUES ($lecturer_id, '$course_name', $credits)";
@@ -27,14 +26,14 @@ class Course extends DB
         return $this->execute($query);
     }
 
-    // Menghapus course berdasarkan ID
+    // ngapus course berdasarkan ID
     public function delete($id)
     {
         $query = "DELETE FROM courses WHERE id = $id";
         return $this->execute($query);
     }
 
-    // Update course
+    // update course
     public function update($id, $data)
     {
         $course_name = $data['course_name'];
@@ -50,11 +49,12 @@ class Course extends DB
         return $this->execute($query);
     }
 
+    // ngambil course by ID
    public function getCourseById($id)
     {
         $query = "SELECT * FROM courses WHERE id = $id";
-        $this->execute($query);       // eksekusi query
-        return $this->getResult();    // ambil satu row hasil query
+        $this->execute($query);       
+        return $this->getResult(); 
     }
 
 }

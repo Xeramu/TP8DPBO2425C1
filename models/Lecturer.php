@@ -2,6 +2,7 @@
 
 class Lecturer extends DB
 {
+    // construktro
     public function __construct($host, $user, $pass, $db)
     {
         parent::__construct($host, $user, $pass, $db);
@@ -13,10 +14,9 @@ class Lecturer extends DB
         return $this->execute($query);
     }
 
-    // Menambahkan dosen baru
+    // nambah lecturer baru
     public function add($data)
     {
-        // Pastikan $data = ['name' => '', 'nidn' => '', 'phone' => '', 'join_date' => 'YYYY-MM-DD']
         $name = $data['name'];
         $nidn = $data['nidn'];
         $phone = $data['phone'] ?? null;
@@ -28,14 +28,14 @@ class Lecturer extends DB
         return $this->execute($query);
     }
 
-    // Menghapus dosen berdasarkan ID
+    // nhapus lecturer berdasarkan ID
     public function delete($id)
     {
         $query = "DELETE FROM lecturers WHERE id = $id";
         return $this->execute($query);
     }
 
-    // Contoh update: ubah tanggal gabung dosen
+    // update lecturer
     public function updateLecturer($id, $name, $nidn, $phone, $join_date) {
         $query = "UPDATE lecturers SET 
                     name = '$name',
@@ -46,6 +46,7 @@ class Lecturer extends DB
         return $this->execute($query);
     }
 
+    // ngambil lecturer berdasarkan id
     public function getLecturerById($id)
     {
         $query = "SELECT * FROM lecturers WHERE id = $id";

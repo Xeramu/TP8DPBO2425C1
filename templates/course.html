@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -28,36 +29,29 @@
   <div class="container-fluid mt-3">
     <div class="row">
 
-    <!-- FORM ADD / EDIT COURSE -->
-    <div class="container-fluid mt-3">
-    <div class="row">
-        <div class="col-lg-4 my-3">
+      <!-- FORM ADD COURSE -->
+      <div class="col-lg-4 my-3">
         <div class="card p-4">
-            <h2 class="card-title mb-3"><?= $editData ? 'Edit Course' : 'Tambah Course' ?></h2>
+          <h2 class="card-title mb-3">Tambah Course</h2>
 
-            <form action="course.php" method="POST">
-            <input type="hidden" name="id" value="<?= $editData['id'] ?? '' ?>">
+          <form action="course.php" method="POST">
 
             <label>Nama Course</label>
-            <input type="text" class="form-control mb-2" name="course_name" value="<?= $editData['course_name'] ?? '' ?>" required>
+            <input type="text" class="form-control mb-2" name="course_name" required>
 
             <label>Credits</label>
-            <input type="number" class="form-control mb-2" name="credits" value="<?= $editData['credits'] ?? '' ?>" min="1" max="6">
+            <input type="number" class="form-control mb-2" name="credits" min="1" max="6">
 
             <label>Pilih Lecturer</label>
             <select class="form-control mb-2" name="lecturer_id" required>
-                <option value="">Pilih Lecturer</option>
+                <option selected value="">Pilih Lecturer</option>
                 DATA_LECTURER_OPTION
             </select>
+            <button type="submit" name="add" class="btn btn-primary mt-2">Add</button>
+          </form>
+        </div>
+      </div>
 
-            <button type="submit" name="<?= $editData ? 'edit' : 'add' ?>" class="btn btn-primary mt-2">
-                <?= $editData ? 'Update' : 'Add' ?>
-            </button>
-            </form>
-        </div>
-        </div>
-    </div>
-    </div>
       <!-- TABLE -->
       <div class="col-lg-8 my-3">
         <h1 class="text-center">Tabel Course</h1>

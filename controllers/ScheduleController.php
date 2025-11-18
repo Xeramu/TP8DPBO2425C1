@@ -6,8 +6,10 @@ include_once("views/ScheduleView.php");
 
 class ScheduleController
 {
+    // properti controller
     private $schedule;
 
+    // contructor
     function __construct()
     {
         $this->schedule = new Schedule(
@@ -18,9 +20,7 @@ class ScheduleController
         );
     }
 
-    // ==========================
-    // INDEX — menampilkan semua schedule
-    // ==========================
+    // Halaman utama (nampilin smua schedule)
     public function index()
     {
         // Ambil semua schedule
@@ -65,7 +65,7 @@ class ScheduleController
             $this->schedule->add($data);
             $this->schedule->close();
 
-            header("Location: schedule.php"); // redirect ke file schedule
+            header("Location: schedule.php"); // refresh page
         }
     }
 
@@ -88,7 +88,7 @@ class ScheduleController
             $this->schedule->update($id, $data);
             $this->schedule->close();
 
-            header("Location: schedule.php");
+            header("Location: schedule.php"); // refresh page
         }
     }
 
@@ -105,7 +105,7 @@ class ScheduleController
             $this->schedule->delete($id);
             $this->schedule->close();
 
-            header("Location: schedule.php");
+            header("Location: schedule.php"); // refresh page
         }
     }
 }

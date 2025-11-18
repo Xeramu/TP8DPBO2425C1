@@ -6,8 +6,10 @@ include_once("views/CourseView.php");
 
 class CourseController
 {
+    // properti controller
     private $course;
 
+    // constrictor
     function __construct()
     {
         $this->course = new Course(
@@ -18,9 +20,7 @@ class CourseController
         );
     }
 
-    // ==========================
-    // INDEX — tampilkan semua course
-    // ==========================
+    // Halaman utama (nampilin smua course)
     public function index($editData = null)
     {
         // Ambil semua course
@@ -66,7 +66,7 @@ class CourseController
             $this->course->add($data);
             $this->course->close();
 
-            header("Location: course.php");
+            header("Location: course.php"); // refresh halaman
         }
     }
 
@@ -89,7 +89,7 @@ class CourseController
             $this->course->update($id, $data);
             $this->course->close();
 
-            header("Location: course.php");
+            header("Location: course.php"); // refresh halaman
         }
     }
 
@@ -106,7 +106,7 @@ class CourseController
             $this->course->delete($id);
             $this->course->close();
 
-            header("Location: course.php");
+            header("Location: course.php"); // refresh halaman
         }
     }
 
@@ -114,7 +114,7 @@ class CourseController
     public function getCourseById($id)
     {
         $this->course->open();
-        $this->course->getCourseById($id); // nanti di model buat method ini
+        $this->course->getCourseById($id);
         $data = $this->course->getResult();
         $this->course->close();
         return $data;

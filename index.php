@@ -16,6 +16,7 @@ else if (isset($_POST['edit'])){
 else if (!empty($_GET['id_hapus'])) {
     $controller->delete();
 } 
+// edit lecturer
 else if (!empty($_GET['id_edit'])) {
     $lecturerToEdit = $controller->getById($_GET['id_edit']);
     $controller->index($lecturerToEdit); // kirim data lecturer yang akan diedit
