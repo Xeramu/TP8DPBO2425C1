@@ -20,26 +20,19 @@ class LecturerController
     }
 
     // Halaman utama (menampilkan semua lecturer)
-    public function index()
+    public function index($editData = null)
     {
-        // Membuka koneksi DB
         $this->lecturer->open();
-
-        // Meminta semua data lecturer
         $this->lecturer->getLecturer();
 
-        // Simpan hasil dalam array
-        $data = array();
+        $data = [];
         while ($row = $this->lecturer->getResult()) {
             array_push($data, $row);
         }
-
-        // Tutup koneksi DB
         $this->lecturer->close();
 
-        // Kirim ke view
         $view = new LecturerView();
-        $view->render($data);
+        $view->render($data, $editData); // kirim juga data edit kalau ada
     }
 
     // =============================
@@ -69,7 +62,7 @@ class LecturerController
     // =============================
     public function edit()
     {
-        if (isset($_POST['add'])) {
+        if (isset($_POST['edit'])) {
 
             $id         = $_POST['id'];
             $name       = $_POST['name'];
@@ -81,7 +74,7 @@ class LecturerController
 
             // Karena model Lecturer cuma punya updateJoinDate(),
             // kita update join_date saja (sesuai model).
-            $this->lecturer->updateJoinDate($id, $join_date);
+            $this->lecturer->updateLecturer($id, $name, $nidn, $phone, $join_date);
 
             // Jika kamu ingin update name/nidn/phone, tinggal tambahin method baru di model.
             $this->lecturer->close();
@@ -106,5 +99,15 @@ class LecturerController
             exit();
         }
     }
+
+    public function getById($id)
+    {
+        $this->lecturer->open();
+        $this->lecturer->getLecturerById($id); // nanti di model buat method ini
+        $data = $this->lecturer->getResult();
+        $this->lecturer->close();
+        return $data;
+    }
+
 
 }

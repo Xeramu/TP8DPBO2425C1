@@ -36,9 +36,21 @@ class Lecturer extends DB
     }
 
     // Contoh update: ubah tanggal gabung dosen
-    public function updateJoinDate($id, $join_date)
-    {
-        $query = "UPDATE lecturers SET join_date = '$join_date' WHERE id = $id";
+    public function updateLecturer($id, $name, $nidn, $phone, $join_date) {
+        $query = "UPDATE lecturers SET 
+                    name = '$name',
+                    nidn = '$nidn',
+                    phone = '$phone',
+                    join_date = '$join_date'
+                WHERE id = $id";
         return $this->execute($query);
     }
+
+    public function getLecturerById($id)
+    {
+        $query = "SELECT * FROM lecturers WHERE id = $id";
+        return $this->execute($query);
+    }
+
+
 }
