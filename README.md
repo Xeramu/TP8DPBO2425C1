@@ -57,4 +57,11 @@
 https://drive.google.com/file/d/12xtu_177041tp_-Z6-k312T7kNCTq2po/view?usp=sharing
 
 
-gabisa compress video krn sepertinya smua web THAT I FRICKING NEED itu pada down smua krn cloudfare jg down. So here's the next best thing. gdrive link. dadah, mau bobok
+gabisa compress video krn sepertinya smua web THAT I FRICKING NEED itu pada down smua krn cloudfare jg down. So here's the next best thing. gdrive link. dadah, mau bobok.
+
+AKHIRNYA CLOUDFARE NYALA.
+
+
+
+https://github.com/user-attachments/assets/285c3dd4-4709-4919-b77c-2d12da3692c0
+
