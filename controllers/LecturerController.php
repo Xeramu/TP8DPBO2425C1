@@ -100,6 +100,7 @@ class LecturerController
         }
     }
 
+    // buat ngambil data lewat id yg dupilih
     public function getById($id)
     {
         $this->lecturer->open();

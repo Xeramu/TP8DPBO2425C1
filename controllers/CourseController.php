@@ -21,8 +21,9 @@ class CourseController
     // ==========================
     // INDEX — tampilkan semua course
     // ==========================
-    public function index()
+    public function index($editData = null)
     {
+        // Ambil semua course
         $this->course->open();
         $this->course->getCourse();
 
@@ -32,7 +33,7 @@ class CourseController
         }
         $this->course->close();
 
-        // Ambil lecturer
+        // Ambil semua lecturer
         $lecturer = new Lecturer(Config::$db_host, Config::$db_user, Config::$db_pass, Config::$db_name);
         $lecturer->open();
         $lecturer->getLecturer();
@@ -45,7 +46,7 @@ class CourseController
 
         // Kirim ke view
         $view = new CourseView();
-        $view->render($courses, $lecturers);
+        $view->render($courses, $lecturers, $editData); // tambahkan $editData
     }
 
     // ==========================
@@ -107,5 +108,15 @@ class CourseController
 
             header("Location: course.php");
         }
+    }
+
+    // buat ngambil data lewat id yg dupilih
+    public function getCourseById($id)
+    {
+        $this->course->open();
+        $this->course->getCourseById($id); // nanti di model buat method ini
+        $data = $this->course->getResult();
+        $this->course->close();
+        return $data;
     }
 }

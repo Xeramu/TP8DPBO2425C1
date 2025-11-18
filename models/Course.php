@@ -49,4 +49,12 @@ class Course extends DB
 
         return $this->execute($query);
     }
+
+   public function getCourseById($id)
+    {
+        $query = "SELECT * FROM courses WHERE id = $id";
+        $this->execute($query);       // eksekusi query
+        return $this->getResult();    // ambil satu row hasil query
+    }
+
 }

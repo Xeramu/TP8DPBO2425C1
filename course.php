@@ -9,15 +9,19 @@ $controller = new CourseController();
 if (isset($_POST['add'])) {
     $controller->add();
 
-// Edit
-} else if (!empty($_GET['id_edit'])) {
+// Edit (form dikirim)
+} else if (isset($_POST['edit'])) {
     $controller->edit();
 
 // Hapus
 } else if (!empty($_GET['id_hapus'])) {
     $controller->delete();
 
-// Tampil data
+// Tampil data (cek apakah ada id_edit untuk pre-fill form)
 } else {
-    $controller->index();
+    $editData = null;
+    if (!empty($_GET['id_edit'])) {
+        $editData = $controller->getCourseById($_GET['id_edit']);
+    }
+    $controller->index($editData);
 }
