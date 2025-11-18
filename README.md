@@ -22,6 +22,7 @@
       views isinya file php Lecturer, Course, Schedule yg ngurusin tampilan sebelum di masukin ke templates. 
       
   d. templates
+  
       templates isinya file html statis yg ada placeholder yg bakal diisi views. html ada navbar, tabel, form, trus ada placeholder yg bakal digantiin sama views.
 
 2. Penjelasan Alur
